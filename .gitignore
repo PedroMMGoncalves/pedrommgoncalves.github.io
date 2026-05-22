@@ -1,0 +1,14 @@
+# Local dev / private notes
+.dev-notes.md
+*.local.md
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# OneDrive sync artefacts
+*.tmp
+~$*
