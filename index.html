@@ -84,6 +84,28 @@ body {
 a:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; border-radius: 2px; }
 img { max-width: 100%; height: auto; }
 
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--navy);
+  color: var(--parchment-light);
+  padding: 12px 20px;
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  z-index: 9999;
+  border-radius: 0 0 4px 0;
+  transition: top 0.2s;
+}
+.skip-link:focus, .skip-link:focus-visible {
+  top: 0;
+  outline: 2px solid var(--copper);
+  outline-offset: 2px;
+}
+
 .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
 
 /* ============================================================
@@ -183,6 +205,7 @@ img { max-width: 100%; height: auto; }
   border: 1px solid rgba(244, 237, 224, 0.22);
   border-radius: 4px;
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: all 0.2s;
   display: inline-flex;
   align-items: center;
@@ -1029,9 +1052,122 @@ html.js .gallery-intro.in-view {
     transform: none;
   }
 }
+
+/* ============================================================
+   PRINT STYLESHEET
+   ============================================================ */
+@media print {
+  /* Universal: black text on white, no shadows, no transitions */
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+  *, *::before, *::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    color: #000 !important;
+    transition: none !important;
+    animation: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  /* Make sure all reveal-targets are visible */
+  html.js .section h2, html.js .exp-card, html.js .skill-category,
+  html.js .pub, html.js .lang-card, html.js .callout,
+  html.js .pubs-footer, html.js .gallery-intro {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  /* Hide ephemeral / interactive chrome */
+  .skip-link, .mini-nav, .lightbox, .show-all-btn, .preview-tag { display: none !important; }
+  /* Hero: simplify radically (no image, just text) */
+  .hero-outer { padding: 0 !important; }
+  .hero {
+    background: none !important;
+    color: #000 !important;
+    padding: 0 0 16pt !important;
+    border-bottom: 2pt solid #000;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    page-break-after: avoid;
+  }
+  .hero h1 { color: #000 !important; font-size: 22pt; line-height: 1.1; }
+  .hero .role { color: #333 !important; }
+  .hero .legend { color: #555 !important; }
+  .hero .legend::after { background: #999 !important; box-shadow: none !important; }
+  .hero-photo {
+    width: 90pt !important;
+    height: 90pt !important;
+  }
+  .hero-photo img { box-shadow: none !important; border: 1pt solid #ccc !important; }
+  .contacts a {
+    background: none !important;
+    border: 1pt solid #999 !important;
+    color: #000 !important;
+    padding: 4pt 8pt !important;
+  }
+  .cv-btn { display: none !important; } /* useless in print */
+  /* Sections */
+  .section { padding: 16pt 0 !important; page-break-inside: avoid; }
+  .section h2 { font-size: 14pt; margin-bottom: 10pt; color: #000 !important; }
+  .section h2 .id { color: #b87333 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  /* Cards: minimal border, no shadows */
+  .exp-card, .skill-category, .pub, .lang-card {
+    border: 1pt solid #ccc !important;
+    border-top: 2pt solid #b87333 !important;
+    background: #fff !important;
+    padding: 10pt 14pt !important;
+    margin-bottom: 8pt !important;
+    page-break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .exp-status, .pub-meta .tag, .lang-level {
+    border: 1pt solid #999;
+    padding: 1pt 5pt !important;
+    color: #000 !important;
+  }
+  /* Gallery: expand to show all, in a simple 2-col grid, smaller thumbs */
+  .masonry { column-count: 2 !important; column-gap: 8pt !important; }
+  .masonry.collapsed .m-item:nth-child(n+13) { display: block !important; }
+  .masonry .m-item {
+    max-height: 4cm !important;
+    margin-bottom: 6pt !important;
+    border: 0.5pt solid #ccc !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+  .masonry .m-item img { max-height: 4cm !important; }
+  /* Links: show URL after, but only for external links */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-family: 'Source Serif 4', serif;
+    font-size: 9pt;
+    color: #666 !important;
+    word-break: break-all;
+  }
+  /* but NOT for image gallery links — too noisy */
+  .m-item::after { content: none !important; }
+  /* Footer minimal */
+  footer { border-top: 1pt solid #ccc !important; padding: 10pt 0 !important; color: #555 !important; }
+  /* Page setup */
+  @page {
+    margin: 1.6cm 1.4cm;
+    size: A4;
+  }
+  /* Section bands: drop the background */
+  .section.band { background: none !important; }
+  /* Don't break inside h2 + first paragraph */
+  h2 + p, h2 + .about-grid { page-break-before: avoid; }
+}
 </style>
 </head>
 <body>
+
+<a href="#about" class="skip-link">Skip to content</a>
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="i-linkedin" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></symbol>
@@ -1991,7 +2127,8 @@ html.js .gallery-intro.in-view {
   // Counter animation
   const counters = document.querySelectorAll('.counter');
   if (counters.length && 'IntersectionObserver' in window && !reducedMotion) {
-    counters.forEach(c => { c.textContent = '0'; });
+    // Don't reset to 0 here — let original text ("50+") show until observer fires.
+    // Avoids broken display in print or no-scroll states. The animation still starts visually from 0.
     const countIO = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting && !e.target.dataset.done) {
