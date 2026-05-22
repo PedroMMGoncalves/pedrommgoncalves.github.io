@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedro Gonçalves — Geospatial Engineer & PhD Candidate</title>
+
+<meta name="description" content="Geospatial engineer at LNEG (Portuguese Geological Survey) and PhD candidate at the University of Porto. Critical Raw Materials prospectivity with Graph Neural Networks, Sentinel-2 and hyperspectral remote sensing, UAV/LiDAR surveys, and training for African geological surveys (PanAfGeo).">
+<meta name="author" content="Pedro Gonçalves">
+<meta name="keywords" content="Pedro Gonçalves, geospatial engineering, remote sensing, GIS, LNEG, PhD, Graph Neural Networks, critical raw materials, Sentinel-2, hyperspectral, LiDAR, UAV, PanAfGeo">
+<link rel="canonical" href="https://pedrommgoncalves.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pedrommgoncalves.github.io/">
+<meta property="og:title" content="Pedro Gonçalves — Geospatial Engineer & PhD Candidate">
+<meta property="og:description" content="Geospatial engineering at LNEG, PhD research on Graph Neural Networks for Critical Raw Materials prospectivity, and trainer for African geological surveys under PanAfGeo.">
+<meta property="og:image" content="https://pedrommgoncalves.github.io/images/Namibia_PCA214.jpg">
+<meta property="og:locale" content="en_GB">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pedro Gonçalves — Geospatial Engineer & PhD Candidate">
+<meta name="twitter:description" content="Geospatial engineering at LNEG, PhD research on Graph Neural Networks for Critical Raw Materials prospectivity, and trainer for African geological surveys under PanAfGeo.">
+<meta name="twitter:image" content="https://pedrommgoncalves.github.io/images/Namibia_PCA214.jpg">
+
+<meta name="theme-color" content="#1e2a3f">
+<link rel="icon" type="image/jpeg" href="images/pedro-photo.jpg">
+<link rel="apple-touch-icon" href="images/pedro-photo.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+<style>
+:root {
+  --ink: #0f1620;
+  --navy: #1e2a3f;
+  --navy-soft: #2c3a52;
+  --slate: #5c6b7d;
+  --slate-light: #8a96a5;
+  --copper: #b87333;
+  --copper-deep: #8a5722;
+  --copper-soft: rgba(184, 115, 51, 0.12);
+  --parchment: #f4ede0;
+  --parchment-light: #fbf6ec;
+  --parchment-deep: #e6dcc8;
+  --white: #ffffff;
+  --rule: rgba(15, 22, 32, 0.12);
+  --rule-strong: rgba(15, 22, 32, 0.2);
+  --max: 1080px;
+  --serif: 'Source Serif 4', Georgia, serif;
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'Space Grotesk', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--parchment);
+  -webkit-font-smoothing: antialiased;
+}
+
+a:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; border-radius: 2px; }
+img { max-width: 100%; height: auto; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero-outer { padding: 40px 24px 0; }
+.hero {
+  position: relative;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 48px 56px 56px;
+  border-radius: 14px;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(15, 22, 32, 0.55) 0%, rgba(30, 42, 63, 0.4) 50%, rgba(15, 22, 32, 0.72) 100%),
+    url('images/Namibia_PCA214.jpg') center/cover;
+  color: var(--parchment-light);
+  box-shadow: 0 8px 32px rgba(15, 22, 32, 0.22);
+}
+
+.hero .legend {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--parchment-light);
+  font-weight: 600;
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+.hero .legend span { color: var(--copper); text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6); }
+.hero .legend::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(244, 237, 224, 0.55);
+  margin-left: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 56px;
+  align-items: center;
+}
+.hero-content { min-width: 0; }
+
+.hero h1 {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  margin-bottom: 14px;
+  color: var(--parchment-light);
+}
+.hero .role {
+  font-family: var(--mono);
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 32px;
+  color: rgba(244, 237, 224, 0.92);
+}
+.hero .role span { color: var(--copper); margin: 0 10px; }
+
+.hero-photo { position: relative; width: 200px; height: 200px; }
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow:
+    0 0 0 1px rgba(244, 237, 224, 0.18),
+    0 12px 36px rgba(15, 22, 32, 0.55),
+    0 4px 12px rgba(15, 22, 32, 0.35);
+}
+
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+.contacts a {
+  font-family: var(--mono);
+  color: var(--parchment-light);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 9px 16px;
+  background: rgba(15, 22, 32, 0.48);
+  border: 1px solid rgba(244, 237, 224, 0.22);
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.contacts a:hover, .contacts a:focus-visible {
+  background: var(--copper);
+  border-color: var(--copper);
+  color: var(--ink);
+  outline: none;
+}
+.contacts a:focus-visible { outline: 2px solid var(--parchment-light); outline-offset: 2px; }
+.contacts .pill-meta {
+  font-family: var(--mono);
+  color: rgba(244, 237, 224, 0.78);
+  font-size: 13px;
+  padding: 9px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--copper);
+  color: var(--ink);
+  padding: 13px 26px;
+  text-decoration: none;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.cv-btn:hover, .cv-btn:focus-visible {
+  background: var(--parchment-light);
+  color: var(--ink);
+  outline: none;
+}
+.cv-btn:focus-visible { outline: 2px solid var(--parchment-light); outline-offset: 3px; }
+
+@media (max-width: 800px) {
+  .hero { padding: 36px 28px 40px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+  .hero .legend { display: none; }
+  .hero-photo {
+    order: -1;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+  }
+}
+
+/* ============================================================
+   CONTOUR DIVIDER
+   ============================================================ */
+.contour {
+  width: 100%;
+  height: 56px;
+  display: block;
+  color: var(--copper);
+}
+.contour svg { width: 100%; height: 100%; display: block; }
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section { padding: 72px 0; }
+.section.band { background: var(--parchment-deep); }
+
+.section h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-bottom: 44px;
+  color: var(--navy);
+  font-variation-settings: 'opsz' 32;
+}
+.section h2 .id {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--copper);
+  font-family: var(--mono);
+}
+
+.subsection-title {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--copper);
+  font-weight: 600;
+  margin: 48px 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.subsection-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+.subsection-title:first-of-type { margin-top: 0; }
+.subsection-title .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--copper);
+}
+.subsection-title.muted .dot { background: var(--slate-light); }
+.subsection-title.muted { color: var(--slate); }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+.about p { margin-bottom: 18px; color: var(--navy-soft); line-height: 1.75; }
+.about p strong { color: var(--navy); }
+.about a {
+  color: var(--copper-deep);
+  text-decoration: underline;
+  text-decoration-color: rgba(138, 87, 34, 0.4);
+  text-underline-offset: 3px;
+}
+.about a:hover { color: var(--copper); }
+
+.callout {
+  margin: 56px auto 0;
+  padding: 28px 36px;
+  background: var(--parchment-light);
+  border-left: 4px solid var(--copper);
+  border-radius: 2px;
+  font-size: 1.05rem;
+  color: var(--navy);
+  max-width: 720px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  line-height: 1.6;
+}
+.callout::before {
+  content: '↗';
+  font-family: var(--serif);
+  color: var(--copper);
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+  font-weight: 600;
+}
+.callout strong { color: var(--copper-deep); font-weight: 600; }
+
+@media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; gap: 0; } }
+
+/* ============================================================
+   EXPERIENCE / PROJECT CARDS
+   ============================================================ */
+.exp-card {
+  background: var(--white);
+  border: 1px solid rgba(184, 115, 51, 0.22);
+  border-top: 4px solid var(--copper);
+  padding: 36px 40px;
+  position: relative;
+  border-radius: 6px;
+  box-shadow: 0 2px 12px rgba(15, 22, 32, 0.06);
+  margin-bottom: 28px;
+}
+.exp-card.muted { border-top-color: var(--slate-light); }
+.exp-card.muted .exp-dates { color: var(--slate); }
+
+.exp-card-with-logo {
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  gap: 32px;
+  align-items: start;
+}
+.exp-logo {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--parchment-light);
+  border-radius: 6px;
+  padding: 12px;
+}
+.exp-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.exp-status {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  background: var(--navy);
+  color: var(--parchment-light);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  padding: 6px 12px;
+  border-radius: 2px;
+}
+.exp-status::before {
+  content: '●';
+  color: var(--copper);
+  margin-right: 6px;
+  font-size: 9px;
+}
+.exp-status.completed { background: var(--slate); }
+.exp-status.completed::before { color: var(--slate-light); }
+
+.exp-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  padding-right: 90px;
+}
+.exp-head h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: -0.005em;
+}
+.exp-dates {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--copper-deep);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+.exp-org {
+  font-size: 14px;
+  color: var(--navy-soft);
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  align-items: center;
+}
+.exp-org i { color: var(--copper); margin-right: 4px; }
+.exp-org a {
+  color: var(--copper-deep);
+  text-decoration: none;
+  border-bottom: 1px solid var(--copper);
+  padding-bottom: 1px;
+}
+.exp-org a:hover { color: var(--copper); }
+.exp-card p { color: var(--navy-soft); margin-bottom: 16px; line-height: 1.7; }
+.exp-card p strong { color: var(--navy); }
+
+.responsibilities {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+  margin-top: 16px;
+}
+.responsibilities li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--navy-soft);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.responsibilities li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  background: var(--copper);
+  transform: rotate(45deg);
+}
+.responsibilities li strong { color: var(--navy); }
+
+@media (max-width: 800px) {
+  .responsibilities { grid-template-columns: 1fr; }
+  .exp-card { padding: 28px 24px; }
+  .exp-card-with-logo { grid-template-columns: 1fr; gap: 20px; }
+  .exp-logo { width: 80px; height: 80px; }
+  .exp-head { padding-right: 0; }
+  .exp-status { position: static; display: inline-block; margin-bottom: 12px; }
+}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skill-category {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 32px 36px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px rgba(15, 22, 32, 0.04);
+}
+.skill-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.skill-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: var(--parchment-deep);
+  color: var(--copper-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+.skill-head h3 {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: -0.005em;
+  flex: 1;
+  min-width: 200px;
+}
+.skill-years {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--copper-deep);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: var(--copper-soft);
+  padding: 4px 10px;
+  border-radius: 3px;
+}
+.skill-desc {
+  font-size: 14.5px;
+  color: var(--navy-soft);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.software-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+}
+.software-item {
+  background: var(--parchment-light);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 14px 12px;
+  text-align: center;
+  transition: all 0.2s;
+}
+.software-item:hover {
+  border-color: var(--copper);
+  transform: translateY(-2px);
+}
+.software-logo {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.software-logo img {
+  max-height: 100%;
+  max-width: 80%;
+  object-fit: contain;
+  filter: grayscale(0.15);
+}
+.software-name {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--navy);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.software-level {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.level-expert { color: var(--copper-deep); }
+.level-advanced { color: var(--copper); }
+.level-intermediate { color: var(--slate); }
+.level-basic { color: var(--slate-light); }
+
+@media (max-width: 600px) {
+  .skill-category { padding: 24px 22px; }
+  .software-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============================================================
+   PUBLICATIONS
+   ============================================================ */
+.pub {
+  display: grid;
+  grid-template-columns: 8px 1fr;
+  gap: 24px;
+  padding: 28px 0;
+  border-top: 1px solid var(--rule);
+}
+.pub-swatch {
+  background: var(--slate);
+  width: 8px;
+  min-height: 100%;
+  align-self: stretch;
+  border-radius: 1px;
+}
+.pub.q1 .pub-swatch { background: var(--copper); }
+.pub h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--navy);
+  line-height: 1.32;
+  letter-spacing: -0.005em;
+}
+.pub-meta {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  color: var(--navy-soft);
+  margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+.pub-meta em { font-style: italic; color: var(--navy-soft); font-family: var(--sans); letter-spacing: 0; }
+.pub-meta .tag {
+  background: var(--copper);
+  color: var(--parchment-light);
+  padding: 3px 9px;
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+.pub-meta .tag.oa { background: var(--slate); }
+.pub-authors {
+  font-size: 14px;
+  color: var(--navy-soft);
+  margin-bottom: 12px;
+}
+.pub-authors strong { color: var(--navy); }
+.pub p { color: var(--navy-soft); font-size: 14.5px; margin-bottom: 14px; line-height: 1.65; }
+.pub-doi {
+  font-family: var(--mono);
+  color: var(--copper-deep);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--copper);
+  padding-bottom: 2px;
+}
+.pub-doi:hover { color: var(--navy); border-color: var(--copper-deep); }
+.pubs-footer {
+  margin-top: 32px;
+  padding: 22px 28px;
+  background: var(--parchment-light);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.pubs-footer p { color: var(--navy); font-size: 14.5px; margin: 0; }
+.pubs-footer p strong { color: var(--copper-deep); }
+.pubs-footer a {
+  font-family: var(--mono);
+  color: var(--copper-deep);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--copper);
+  padding-bottom: 2px;
+}
+.pubs-footer a:hover { color: var(--navy); }
+
+/* ============================================================
+   EDUCATION (uses exp-card)
+   ============================================================ */
+
+/* ============================================================
+   LANGUAGES
+   ============================================================ */
+.languages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.lang-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 24px 26px;
+  border-top: 3px solid var(--copper);
+}
+.lang-card.muted { border-top-color: var(--slate-light); }
+.lang-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.lang-flag { font-size: 1.6rem; line-height: 1; }
+.lang-head h4 {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--navy);
+  flex: 1;
+}
+.lang-level {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 3px;
+}
+.lang-level.native { background: var(--copper); color: var(--parchment-light); }
+.lang-level.advanced { background: var(--copper-soft); color: var(--copper-deep); }
+.lang-level.basic { background: var(--parchment-deep); color: var(--slate); }
+.lang-skills { display: flex; flex-direction: column; gap: 10px; }
+.lang-row {
+  display: grid;
+  grid-template-columns: 70px 1fr 36px;
+  align-items: center;
+  gap: 12px;
+}
+.lang-label { font-family: var(--mono); font-size: 11px; color: var(--slate); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+.lang-bar { height: 4px; background: var(--parchment-deep); border-radius: 2px; overflow: hidden; }
+.lang-fill { height: 100%; background: var(--copper); border-radius: 2px; }
+.lang-card.muted .lang-fill { background: var(--slate); }
+.lang-cefr { font-family: var(--mono); font-size: 11px; color: var(--navy); font-weight: 700; text-align: right; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  padding: 56px 0 72px;
+  text-align: center;
+  color: var(--slate);
+  font-size: 13px;
+  font-family: var(--mono);
+  letter-spacing: 0.08em;
+  border-top: 1px solid var(--rule);
+  margin-top: 40px;
+}
+footer p { margin-bottom: 6px; }
+footer a {
+  color: var(--copper-deep);
+  text-decoration: none;
+  border-bottom: 1px solid var(--copper);
+  padding-bottom: 1px;
+}
+footer a:hover { color: var(--copper); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .section { padding: 56px 0; }
+  .section h2 { font-size: 1.9rem; margin-bottom: 36px; }
+  .wrap { padding: 0 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HERO -->
+<!-- ============================================================ -->
+<div class="hero-outer">
+  <header class="hero">
+    <p class="legend">N <span>41° 11′ 06″</span>  ·  W <span>008° 41′ 14″</span>  ·  Matosinhos, PT</p>
+
+    <div class="hero-grid">
+      <div class="hero-content">
+        <h1>Pedro Gonçalves</h1>
+        <p class="role">Geospatial Engineer <span>·</span> PhD Candidate <span>·</span> Trainer</p>
+
+        <nav class="contacts" aria-label="Contact links">
+          <a href="https://www.linkedin.com/in/pedrommgoncalves85/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/PedroMMGoncalves" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://orcid.org/0000-0002-6556-6086" target="_blank" rel="noopener"><i class="fab fa-orcid"></i> ORCID</a>
+          <a href="mailto:pedro.goncalves@lneg.pt"><i class="fas fa-envelope"></i> pedro.goncalves@lneg.pt</a>
+        </nav>
+
+        <a href="media/Pedro_Goncalves_CV_2025.pdf" class="cv-btn" target="_blank" rel="noopener" download><i class="fas fa-arrow-down"></i> Download CV</a>
+      </div>
+
+      <div class="hero-photo">
+        <img src="images/pedro-photo.jpg" alt="Pedro Gonçalves">
+      </div>
+    </div>
+  </header>
+</div>
+
+<!-- ============================================================ -->
+<!-- ABOUT -->
+<!-- ============================================================ -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="contour" style="margin-bottom: 40px;" aria-hidden="true">
+      <svg viewBox="0 0 1080 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,14 Q135,4 270,14 T540,14 T810,14 T1080,14" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.18"/>
+        <path d="M0,22 Q135,10 270,22 T540,22 T810,22 T1080,22" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.30"/>
+        <path d="M0,30 Q135,18 270,30 T540,30 T810,30 T1080,30" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.45"/>
+        <path d="M0,40 Q135,28 270,40 T540,40 T810,40 T1080,40" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.30"/>
+        <path d="M0,48 Q135,38 270,48 T540,48 T810,48 T1080,48" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.18"/>
+      </svg>
+    </div>
+    <h2><span class="id">[01]</span> About</h2>
+
+    <div class="about-grid about">
+      <div>
+        <p>My work centres on <strong>modular geospatial engineering</strong>. Since 2013 at <a href="https://www.lneg.pt/" target="_blank" rel="noopener">LNEG</a>, Portugal's Geological Survey, my role has shifted from operating GIS software to developing my own tools and orchestrating the complex processing chains that turn raw geospatial data into reproducible scientific outputs.</p>
+
+        <p>Outputs range from processing toolboxes to standalone applications with their own UIs, with batch pipelines and external integrations in between. Peer-reviewed scientific methodologies are translated into Python implementations and integrated into reproducible, fully automated workflows. Projects span <strong>flood hazard mapping, mineral prospectivity at national and continental scale, LiDAR surveys of abandoned mine sites, and country-wide satellite mosaics for hydrogeological mapping</strong> in Africa and the Iberian Peninsula.</p>
+      </div>
+      <div>
+        <p>PhD candidate in Geographic Engineering at the Faculty of Sciences, University of Porto, funded by an FCT research scholarship. Research applies <strong>Graph Neural Networks to Critical Raw Materials prospectivity mapping</strong> in the South Portuguese Zone and Ossa-Morena Zone, integrating Sentinel-2, hyperspectral data, and geological knowledge.</p>
+
+        <p>Trainer for African geological surveys under the EuroGeoSurveys / <strong>PanAfGeo</strong> programme. Sessions delivered in São Tomé and Príncipe, Cabo Verde, and Mozambique, covering GIS, SAR/InSAR, UAV operations, and hyperspectral data processing. Former board member of <strong>APPSIG</strong>, the Portuguese Association for Geographic Information Systems (2016–2024).</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Open to collaborations</strong> in critical raw materials, geospatial AI, remote sensing, UAV/LiDAR surveys, and training partnerships.
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CURRENT POSITION -->
+<!-- ============================================================ -->
+<section class="section band" id="position">
+  <div class="wrap">
+    <h2><span class="id">[02]</span> Current Position</h2>
+
+    <article class="exp-card">
+      <span class="exp-status">ACTIVE</span>
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head">
+            <h3>Senior Technician</h3>
+            <span class="exp-dates">2019 — PRESENT</span>
+          </div>
+          <p class="exp-org">
+            <span><i class="fas fa-building"></i> National Laboratory of Energy and Geology (LNEG)</span>
+            <span><i class="fas fa-map-marker-alt"></i> Mineral Resources & Geophysics, Portugal</span>
+          </p>
+          <p>Research Fellow since 2013, Senior Technician since August 2019. Technical lead across national and international research projects: multi-scale sensor approach from satellite to drone for mineral exploration and geological characterisation. Contributor to the <em>Critical Raw Materials Deposits Map of mainland Portugal</em>. Increasingly building custom remote-sensing tools in Python.</p>
+
+          <ul class="responsibilities">
+            <li><strong>Remote Sensing</strong> · advanced processing of satellite imagery, UAV data, and LiDAR for geological and environmental applications</li>
+            <li><strong>GIS Development</strong> · spatial databases, geoprocessing routines, analytical workflows</li>
+            <li><strong>UAV Operations</strong> · multispectral and LiDAR missions for mineral exploration and land monitoring</li>
+            <li><strong>Cartography</strong> · thematic, geological, and flood-hazard maps at multiple scales</li>
+            <li><strong>Scientific Communication</strong> · author and presenter at international conferences</li>
+            <li><strong>Research Projects</strong> · technical contributor in EU and bilateral research projects on natural resources and climate</li>
+          </ul>
+        </div>
+        <div class="exp-logo">
+          <img src="images/logos/lneg-logo.png" alt="LNEG">
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PREVIOUS EXPERIENCE -->
+<!-- ============================================================ -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <h2><span class="id">[03]</span> Previous Experience</h2>
+
+    <article class="exp-card">
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>Research Fellow</h3><span class="exp-dates">2016 — 2019</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-building"></i> LNEG — Portuguese Geological Survey</span>
+            <span><i class="fas fa-map-marker-alt"></i> Mineral Resources & Geophysics</span>
+          </p>
+          <p>Ossa-Morena Zone spatial data acquisition, processing and dissemination. Construction of geodatabases and creation of mineral prospectivity mapping for the Moura-Ficalho Region using Analytical Hierarchy Process (AHP) methodology.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/lneg-logo.png" alt="LNEG"></div>
+      </div>
+    </article>
+
+    <article class="exp-card">
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>Board Member</h3><span class="exp-dates">2016 — 2024</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-building"></i> APPSIG — Portuguese Association for Geographic Information Systems</span>
+          </p>
+          <p>Board member contributing to the advancement of GIS technologies and methodologies in Portugal. Promoting best practices and professional development in the geospatial community.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/appsig-logo.png" alt="APPSIG"></div>
+      </div>
+    </article>
+
+    <article class="exp-card">
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>Research Assistant</h3><span class="exp-dates">2013 — 2014</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-building"></i> LNEG — Portuguese Geological Survey</span>
+          </p>
+          <p>Research scholarship focusing on spatial data acquisition and centralisation of information. Georeferencing of large volumes of maps at different scales and comprehensive map production for geological and mineral resource projects.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/lneg-logo.png" alt="LNEG"></div>
+      </div>
+    </article>
+
+    <article class="exp-card">
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>Teaching Assistant</h3><span class="exp-dates">2011 — 2013</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-university"></i> University of Porto, Faculty of Arts</span>
+          </p>
+          <p>Monitor for the Master's programme in Geographic Information Systems and Territorial Planning. Assisted students with GIS analysis, spatial modeling, and research methodologies.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/flup.png" alt="FLUP"></div>
+      </div>
+    </article>
+
+    <article class="exp-card">
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>GIS Technician</h3><span class="exp-dates">2010 — 2011</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-university"></i> University of Porto, Faculty of Arts</span>
+          </p>
+          <p>Technical support for GIS laboratories and research projects. Provided expertise in spatial analysis, data management, and cartographic production.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/flup.png" alt="FLUP"></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SKILLS -->
+<!-- ============================================================ -->
+<section class="section band" id="skills">
+  <div class="wrap">
+    <h2><span class="id">[04]</span> Skills & Technology</h2>
+
+    <div class="skill-category">
+      <div class="skill-head">
+        <div class="skill-icon"><i class="fas fa-map"></i></div>
+        <h3>Cartographic Design</h3>
+        <span class="skill-years">12+ Years</span>
+      </div>
+      <p class="skill-desc">Professional cartographic design and map production utilising industry-standard software for publication-ready maps and visual communications. Expert in cartographic principles, colour theory, and typography for effective spatial data visualisation.</p>
+      <div class="software-grid">
+        <div class="software-item"><div class="software-logo"><img src="images/logos/coreldraw-logo.png" alt="CorelDRAW"></div><div class="software-name">CorelDRAW</div><div class="software-level level-intermediate">Intermediate</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/inkscape-logo.png" alt="Inkscape"></div><div class="software-name">Inkscape</div><div class="software-level level-intermediate">Intermediate</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/qgis-logo.png" alt="QGIS"></div><div class="software-name">QGIS</div><div class="software-level level-expert">Expert</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/arcgis-pro-logo.png" alt="ArcGIS Pro"></div><div class="software-name">ArcGIS Pro</div><div class="software-level level-expert">Expert</div></div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-head">
+        <div class="skill-icon"><i class="fas fa-globe"></i></div>
+        <h3>Spatial Data Creation and Analysis</h3>
+        <span class="skill-years">12+ Years</span>
+      </div>
+      <p class="skill-desc">Advanced spatial analysis and geodatabase management with expertise in complex analytical workflows and spatial modeling. Specialised in georeferencing, geodatabase design, topology validation, and spatial data quality assessment. Development of custom geoprocessing tools and model-builder workflows.</p>
+      <div class="software-grid">
+        <div class="software-item"><div class="software-logo"><img src="images/logos/arcgis-pro-logo.png" alt="ArcGIS Pro"></div><div class="software-name">ArcGIS Pro</div><div class="software-level level-expert">Expert</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/qgis-logo.png" alt="QGIS"></div><div class="software-name">QGIS</div><div class="software-level level-expert">Expert</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/grass-green.png" alt="GRASS GIS"></div><div class="software-name">GRASS GIS</div><div class="software-level level-intermediate">Intermediate</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/saga_logo.png" alt="SAGA GIS"></div><div class="software-name">SAGA GIS</div><div class="software-level level-intermediate">Intermediate</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/arcgis-field-maps-logo.png" alt="ArcGIS Field Maps"></div><div class="software-name">ArcGIS Field Maps</div><div class="software-level level-advanced">Advanced</div></div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-head">
+        <div class="skill-icon"><i class="fas fa-satellite-dish"></i></div>
+        <h3>Satellite Remote Sensing</h3>
+        <span class="skill-years">5+ Years</span>
+      </div>
+      <p class="skill-desc">Multispectral and SAR satellite imagery acquisition, processing and analysis. Atmospheric correction, radiometric calibration, change detection. Spectral analysis for geological mineral mapping, vegetation monitoring, land cover classification. Cloud-based Earth observation with Google Earth Engine.</p>
+      <div class="software-grid">
+        <div class="software-item"><div class="software-logo"><img src="images/logos/envi.png" alt="ENVI"></div><div class="software-name">ENVI</div><div class="software-level level-advanced">Advanced</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/snap.png" alt="SNAP"></div><div class="software-name">SNAP</div><div class="software-level level-expert">Expert</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/catalyst-logo.png" alt="CATALYST"></div><div class="software-name">CATALYST</div><div class="software-level level-advanced">Advanced</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/ee_logo.png" alt="Google Earth Engine"></div><div class="software-name">Google Earth Engine</div><div class="software-level level-intermediate">Intermediate</div></div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-head">
+        <div class="skill-icon"><i class="fas fa-helicopter"></i></div>
+        <h3>UAV Operations</h3>
+        <span class="skill-years">4+ Years</span>
+      </div>
+      <p class="skill-desc">Professional UAV pilot with 500+ successful missions. Certified operator with expertise in flight planning, ground control point establishment, and optical/multispectral/LiDAR data acquisition. Structure-from-Motion photogrammetric processing and dense point cloud generation.</p>
+      <div class="software-grid">
+        <div class="software-item"><div class="software-logo"><img src="images/logos/metashape-logo.png" alt="Metashape"></div><div class="software-name">Agisoft Metashape</div><div class="software-level level-expert">Expert</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/pix4dfields-logo.png" alt="Pix4D Fields"></div><div class="software-name">Pix4D Fields</div><div class="software-level level-expert">Expert</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/pix4dmapper-logo.png" alt="Pix4D Mapper"></div><div class="software-name">Pix4D Mapper</div><div class="software-level level-expert">Expert</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/pix4dsurvey-logo.png" alt="Pix4D Survey"></div><div class="software-name">Pix4D Survey</div><div class="software-level level-advanced">Advanced</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/dji-terra.png" alt="DJI Terra"></div><div class="software-name">DJI Terra</div><div class="software-level level-advanced">Advanced</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/cloudcompareV2_logo.png" alt="CloudCompare"></div><div class="software-name">CloudCompare</div><div class="software-level level-intermediate">Intermediate</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/correlator3d-logo.png" alt="Correlator3D"></div><div class="software-name">Correlator3D</div><div class="software-level level-intermediate">Intermediate</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/agrowing-logo.png" alt="Agrowing"></div><div class="software-name">Agrowing</div><div class="software-level level-advanced">Advanced</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/webodm-logo.png" alt="WebODM"></div><div class="software-name">WebODM</div><div class="software-level level-expert">Expert</div></div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-head">
+        <div class="skill-icon"><i class="fas fa-clipboard-list"></i></div>
+        <h3>Field Data Acquisition</h3>
+        <span class="skill-years">8+ Years</span>
+      </div>
+      <p class="skill-desc">Form-based survey creation via Survey123, KoBo Toolbox, ODK and Mergin Maps. Mobile data collection workflows, centimetre-level GPS surveying, and offline-capable data collection deployments with quality control protocols.</p>
+      <div class="software-grid">
+        <div class="software-item"><div class="software-logo"><img src="images/logos/Survey123-logo.png" alt="Survey123"></div><div class="software-name">Survey123</div><div class="software-level level-expert">Expert</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/kobotoolbox-logo.png" alt="KoBo Toolbox"></div><div class="software-name">KoBo Toolbox</div><div class="software-level level-advanced">Advanced</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/ODK-logo.png" alt="ODK"></div><div class="software-name">ODK Collect</div><div class="software-level level-advanced">Advanced</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/merginmaps-logo.png" alt="Mergin Maps"></div><div class="software-name">Mergin Maps</div><div class="software-level level-advanced">Advanced</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/arcgis-field-maps-logo.png" alt="ArcGIS Field Maps"></div><div class="software-name">ArcGIS Field Maps</div><div class="software-level level-expert">Expert</div></div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-head">
+        <div class="skill-icon"><i class="fas fa-database"></i></div>
+        <h3>SQL and Databases</h3>
+        <span class="skill-years">6+ Years</span>
+      </div>
+      <p class="skill-desc">Spatial database design and optimisation with PostgreSQL/PostGIS. Complex spatial queries, indexing strategies, performance optimisation. Spatial data integration from heterogeneous sources and ETL pipeline development.</p>
+      <div class="software-grid">
+        <div class="software-item"><div class="software-logo"><img src="images/logos/postgis-logo.png" alt="PostGIS"></div><div class="software-name">PostGIS</div><div class="software-level level-advanced">Advanced</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/postgresql-logo.png" alt="PostgreSQL"></div><div class="software-name">PostgreSQL</div><div class="software-level level-advanced">Advanced</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/iceberg-logo.png" alt="Apache Iceberg"></div><div class="software-name">Apache Iceberg</div><div class="software-level level-basic">Basic</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/Apache_Spark_logo.png" alt="Apache Spark"></div><div class="software-name">Apache Spark</div><div class="software-level level-basic">Basic</div></div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-head">
+        <div class="skill-icon"><i class="fas fa-code"></i></div>
+        <h3>Programming and Automation</h3>
+        <span class="skill-years">2+ Years</span>
+      </div>
+      <p class="skill-desc">Automated geospatial workflows in Python (ArcPy, GDAL, GeoPandas, rasterio) and R. Custom GIS tools and web services. Version control (Git), containerised environments (Docker), and reproducible research workflows.</p>
+      <div class="software-grid">
+        <div class="software-item"><div class="software-logo"><img src="images/logos/python.png" alt="Python"></div><div class="software-name">Python</div><div class="software-level level-advanced">Advanced</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/r-logo.png" alt="R"></div><div class="software-name">R</div><div class="software-level level-intermediate">Intermediate</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/jupyter-logo.png" alt="Jupyter"></div><div class="software-name">Jupyter</div><div class="software-level level-advanced">Advanced</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/Visual_Studio_Code-logon.png" alt="VS Code"></div><div class="software-name">VS Code</div><div class="software-level level-advanced">Advanced</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/github-git-logo.png" alt="Git/GitHub"></div><div class="software-name">Git/GitHub</div><div class="software-level level-intermediate">Intermediate</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/docker-logo.png" alt="Docker"></div><div class="software-name">Docker</div><div class="software-level level-intermediate">Intermediate</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/Anaconda_Logo.png" alt="Anaconda"></div><div class="software-name">Anaconda</div><div class="software-level level-advanced">Advanced</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/airflow-logo.png" alt="Airflow"></div><div class="software-name">Apache Airflow</div><div class="software-level level-basic">Basic</div></div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-head">
+        <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Big Data Analytics — Mineral Prospectivity</h3>
+        <span class="skill-years">2+ Years</span>
+      </div>
+      <p class="skill-desc">Mineral prospectivity mapping with machine learning algorithms and big-data frameworks. Integration of geological, geochemical, geophysical, and remote-sensing datasets. AHP, weights-of-evidence, fuzzy logic, ensemble methods, and neural-network approaches (incl. Graph Neural Networks for PhD research).</p>
+      <div class="software-grid">
+        <div class="software-item"><div class="software-logo"><img src="images/logos/Apache_Spark_logo.png" alt="Apache Spark"></div><div class="software-name">Apache Spark</div><div class="software-level level-basic">Basic</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/tf_logo.png" alt="TensorFlow"></div><div class="software-name">TensorFlow</div><div class="software-level level-intermediate">Intermediate</div></div>
+        <div class="software-item"><div class="software-logo"><img src="images/logos/scikit_learn-logo.png" alt="scikit-learn"></div><div class="software-name">scikit-learn</div><div class="software-level level-intermediate">Intermediate</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PUBLICATIONS -->
+<!-- ============================================================ -->
+<section class="section" id="publications">
+  <div class="wrap">
+    <h2><span class="id">[05]</span> Selected Publications</h2>
+
+    <article class="pub q1">
+      <div class="pub-swatch" aria-hidden="true"></div>
+      <div>
+        <h3>Unlocking the Secondary Critical Raw Material Potential of Historical Mine Sites</h3>
+        <div class="pub-meta">
+          <span class="tag">Q1</span>
+          <em>Minerals</em> · 2024
+          <span>Peer-reviewed</span>
+        </div>
+        <p class="pub-authors">de Oliveira, D.P.S.; <strong>Gonçalves, P.</strong>; Morais, I.; Silva, T.; et al.</p>
+        <p>Comprehensive study on secondary critical raw materials from historical mining sites in Southern Portugal, focusing on sustainable resource-recovery methodologies.</p>
+        <a class="pub-doi" href="https://doi.org/10.3390/min14020127" target="_blank" rel="noopener">DOI 10.3390/min14020127 →</a>
+      </div>
+    </article>
+
+    <article class="pub q1">
+      <div class="pub-swatch" aria-hidden="true"></div>
+      <div>
+        <h3>3D Constrained Gravity Inversion and TEM Analysis for New Target Generation</h3>
+        <div class="pub-meta">
+          <span class="tag">Q1</span>
+          <em>Natural Resources Research</em> · 2022
+          <span>Peer-reviewed</span>
+        </div>
+        <p class="pub-authors">Marques, F.; Dias, P.; Carvalho, J.; <strong>Gonçalves, P.</strong>; et al.</p>
+        <p>Advanced geophysical analysis for mineral exploration in the Neves-Corvo VMS mine region, Iberian Pyrite Belt, integrating multiple geophysical datasets.</p>
+        <a class="pub-doi" href="https://doi.org/10.1007/s11053-022-10081-4" target="_blank" rel="noopener">DOI 10.1007/s11053-022-10081-4 →</a>
+      </div>
+    </article>
+
+    <article class="pub">
+      <div class="pub-swatch" aria-hidden="true"></div>
+      <div>
+        <h3>Multispectral and Hyperspectral Remote Sensing in the Portuguese Sector of the Iberian Pyrite Belt</h3>
+        <div class="pub-meta">
+          <span class="tag oa">Open Access</span>
+          <em>Comunicações Geológicas</em> · 2020
+        </div>
+        <p class="pub-authors">Quental, L.; <strong>Gonçalves, P.</strong>; Oliveira, D.; Batista, M.J.; et al.</p>
+        <p>Comprehensive remote sensing study utilising multispectral and hyperspectral data for geological characterisation and mineral exploration in southern Portugal.</p>
+        <a class="pub-doi" href="http://hdl.handle.net/10400.9/4193" target="_blank" rel="noopener">Full text · hdl.handle.net/10400.9/4193 →</a>
+      </div>
+    </article>
+
+    <article class="pub">
+      <div class="pub-swatch" aria-hidden="true"></div>
+      <div>
+        <h3>Flood Hazard Assessment: Santa Cruz do Bispo Sector, Leça River, Portugal</h3>
+        <div class="pub-meta">
+          <span class="tag" style="background: var(--navy-soft);">Q2</span>
+          <em>Journal of Maps</em> · 2014
+        </div>
+        <p class="pub-authors"><strong>Gonçalves, P.</strong>; Marafuz, I.; Gomes, A.</p>
+        <p>Methodological contribution to improve land-use planning through advanced flood-hazard mapping and hydraulic-modelling techniques.</p>
+        <a class="pub-doi" href="https://doi.org/10.1080/17445647.2014.974226" target="_blank" rel="noopener">DOI 10.1080/17445647.2014.974226 →</a>
+      </div>
+    </article>
+
+    <div class="pubs-footer">
+      <p><strong>50+ peer-reviewed publications</strong> in international journals and conferences.</p>
+      <a href="https://orcid.org/0000-0002-6556-6086" target="_blank" rel="noopener">View complete list on ORCID →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- RESEARCH PROJECTS -->
+<!-- ============================================================ -->
+<section class="section band" id="projects">
+  <div class="wrap">
+    <h2><span class="id">[06]</span> Research Projects</h2>
+
+    <h3 class="subsection-title"><span class="dot"></span> Active Projects</h3>
+
+    <article class="exp-card">
+      <span class="exp-status">ONGOING</span>
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>GENESIS</h3><span class="exp-dates">2024 — 2028</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-building"></i> Horizon Europe Project</span>
+            <span><i class="fas fa-external-link-alt"></i> <a href="https://genesisnbs.eu/" target="_blank" rel="noopener">genesisnbs.eu</a></span>
+          </p>
+          <p><strong>Geologically Enhanced Nature-based Solutions for climate change resiliency of critical water Infrastructure.</strong> Developing remote-sensing analysis and custom tools and processing frameworks, creating and integrating GIS data into databases to support nature-based solution implementation and monitoring.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/genesis-logo.png" alt="GENESIS"></div>
+      </div>
+    </article>
+
+    <article class="exp-card">
+      <span class="exp-status">ONGOING</span>
+      <div>
+        <div class="exp-head"><h3>Hydrogeological Map of Mozambique</h3><span class="exp-dates">2024 — 2028</span></div>
+        <p class="exp-org">
+          <span><i class="fas fa-building"></i> World Bank Project</span>
+          <span><i class="fas fa-external-link-alt"></i> <a href="https://projects.worldbank.org/en/projects-operations/procurement-detail/OP00292408" target="_blank" rel="noopener">World Bank Portal</a></span>
+        </p>
+        <p><strong>Consulting Services for Updating and Upgrading the Hydrogeological Map of Mozambique.</strong> Development of custom remote-sensing tools to create country-wide mosaics using best-pixel strategy. Custom indices to identify water bodies and soil moisture. Delivered tailored training sessions on remote sensing and field data acquisition.</p>
+      </div>
+    </article>
+
+    <article class="exp-card">
+      <span class="exp-status">ONGOING</span>
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>Xtract</h3><span class="exp-dates">2023 — 2026</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-industry"></i> Horizon Europe Project</span>
+            <span><i class="fas fa-external-link-alt"></i> <a href="https://xtract-project.eu/" target="_blank" rel="noopener">xtract-project.eu</a></span>
+          </p>
+          <p><strong>A Sustainable Ecosystem for the Innovative Resource Recovery and Complex Ore Extraction.</strong> LiDAR survey of São Domingos mine site, focusing on tailings monitoring and volume calculation of historical mine dumps to support sustainable resource-recovery operations.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/xtract-logo.png" alt="Xtract"></div>
+      </div>
+    </article>
+
+    <article class="exp-card">
+      <span class="exp-status">ONGOING</span>
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>Soil@Int</h3><span class="exp-dates">2023 — 2026</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-seedling"></i> Soil Monitoring & AI Project</span>
+            <span><i class="fas fa-external-link-alt"></i> <a href="https://www.cesam-la.pt/en/projects/soils-monitoring-to-mitigate-the-effect-of-climate-change-soilint/" target="_blank" rel="noopener">cesam-la.pt</a></span>
+          </p>
+          <p><strong>Soils monitoring to mitigate the effect of climate change.</strong> Multispectral and LiDAR surveys. Custom toolbox to process Landsat 8/9 Collection 2 Level 2, Sentinel-1 and Sentinel-2 imagery, calculating vegetation and soil indices and performing multitemporal analysis. Deep-learning algorithms to estimate Soil Organic Carbon from UAV and satellite data.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/soilint-logo.jpg" alt="Soil@Int"></div>
+      </div>
+    </article>
+
+    <article class="exp-card">
+      <span class="exp-status">ONGOING</span>
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>GSEU — A Geological Service for Europe</h3><span class="exp-dates">2022 — 2027</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-flag"></i> UK Research & Innovation</span>
+            <span><i class="fas fa-external-link-alt"></i> <a href="https://www.geologicalservice.eu/" target="_blank" rel="noopener">geologicalservice.eu</a></span>
+          </p>
+          <p>Multiple UAV missions (aerophotogrammetry and LiDAR) on abandoned mines in southern Portugal — calculating volumes of old mine tailings to estimate in-situ mineral tonnage. Sentinel-2 Level-1C processing with the C2RCC algorithm. Custom toolbox for Total Suspended Sediments estimation.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/gseu_logo.png" alt="GSEU"></div>
+      </div>
+    </article>
+
+    <article class="exp-card">
+      <span class="exp-status">ONGOING</span>
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>AfricaMaVal</h3><span class="exp-dates">2022 — 2025</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-handshake"></i> EU-Africa Partnership, 18 Partners</span>
+            <span><i class="fas fa-external-link-alt"></i> <a href="https://africamaval.eu/" target="_blank" rel="noopener">africamaval.eu</a></span>
+          </p>
+          <p><strong>EU-Africa business networking on Critical Raw Materials value chains.</strong> Mineral prospectivity maps for critical and strategic raw materials in Mozambique and Morocco at 1:1,000,000 and 1:250,000 scales. Contributed to continent-wide mineral prospectivity maps for Africa.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/africa_maval-logo.png" alt="AfricaMaVal"></div>
+      </div>
+    </article>
+
+    <article class="exp-card">
+      <span class="exp-status">ONGOING</span>
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>PanAfGeo+</h3><span class="exp-dates">2025 — 2027</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-graduation-cap"></i> Capacity Building Programme</span>
+            <span><i class="fas fa-external-link-alt"></i> <a href="https://panafgeo.eurogeosurveys.org/" target="_blank" rel="noopener">panafgeo.eurogeosurveys.org</a></span>
+          </p>
+          <p><strong>Pan-African Support to Geological Sciences and Technology.</strong> Co-lead trainer in WP-6: Geoscientific Information Management. Creating original content covering GIS data acquisition, editing, geologic map creation, topology, georeferencing, remote-sensing data processing, spatial databases, and UAV data acquisition.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/panafgeo-logo.png" alt="PanAfGeo"></div>
+      </div>
+    </article>
+
+    <h3 class="subsection-title muted"><span class="dot"></span> Completed Projects</h3>
+
+    <article class="exp-card muted">
+      <span class="exp-status completed">COMPLETED</span>
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>PanAfGeo2</h3><span class="exp-dates">2021 — 2024</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-external-link-alt"></i> <a href="https://panafgeo.eurogeosurveys.org/" target="_blank" rel="noopener">panafgeo.eurogeosurveys.org</a></span>
+          </p>
+          <p>Co-lead trainer in WP-G: Geoscientific Information Management. Delivered 42 training sessions across Africa covering GIS, remote sensing, spatial databases, and UAV operations.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/panafgeo-logo.png" alt="PanAfGeo"></div>
+      </div>
+    </article>
+
+    <article class="exp-card muted">
+      <span class="exp-status completed">COMPLETED</span>
+      <div>
+        <div class="exp-head"><h3>DOURO — Sedimentation Study</h3><span class="exp-dates">2022 — 2023</span></div>
+        <p class="exp-org">
+          <span><i class="fas fa-water"></i> River Dynamics & Environmental Impact</span>
+          <span><i class="fas fa-building"></i> EDP Contract</span>
+        </p>
+        <p>Sedimentation study in Douro reservoirs and impact on coastal sediment drift. Processed high-resolution bathymetric data; comparative analysis of multiple survey datasets to quantify accretion and erosion dynamics across several Douro tributaries.</p>
+      </div>
+    </article>
+
+    <article class="exp-card muted">
+      <span class="exp-status completed">COMPLETED</span>
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>AGEO — Atlantic Geohazard Risk Management</h3><span class="exp-dates">2019 — 2023</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-external-link-alt"></i> <a href="https://ageoatlantic.eu/" target="_blank" rel="noopener">ageoatlantic.eu</a></span>
+          </p>
+          <p>Atlantic geohazard risk assessment and management platform. Remote sensing applications for geohazard monitoring and early-warning systems across the Atlantic region.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/ageo-logo.png" alt="AGEO"></div>
+      </div>
+    </article>
+
+    <article class="exp-card muted">
+      <span class="exp-status completed">COMPLETED</span>
+      <div>
+        <div class="exp-head"><h3>CEGMA 2.0 — Centro de Estudos Geológicos e Mineiros do Alentejo</h3><span class="exp-dates">2020 — 2022</span></div>
+        <p class="exp-org">
+          <span><i class="fas fa-map-marker-alt"></i> Alentejo Regional Operational Programme</span>
+          <span><i class="fas fa-external-link-alt"></i> <a href="https://www.lneg.pt/project/cegma-2-0/" target="_blank" rel="noopener">LNEG project page</a></span>
+        </p>
+        <p>Strategic development of advanced research facilities for extractive activities in southern Portugal (Neves-Corvo, Aljustrel mines, ornamental rock quarrying). GNSS equipment procurement for high-precision geophysical applications.</p>
+      </div>
+    </article>
+
+    <article class="exp-card muted">
+      <span class="exp-status completed">COMPLETED</span>
+      <div>
+        <div class="exp-head"><h3>Caracterização de Geossítios do Vale do Guadiana</h3><span class="exp-dates">2020 — 2022</span></div>
+        <p class="exp-org"><span><i class="fas fa-mountain"></i> Geological Heritage Characterisation</span></p>
+        <p>Comprehensive characterisation and mapping of geological heritage sites in the Guadiana Valley. GIS-based inventory and assessment of geological significance for educational and tourism purposes.</p>
+      </div>
+    </article>
+
+    <article class="exp-card muted">
+      <span class="exp-status completed">COMPLETED</span>
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>GEO-FPI — Observatório Transfronteiriço</h3><span class="exp-dates">2017 — 2019</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-handshake"></i> Cross-border Portugal–Spain Cooperation</span>
+            <span><i class="fas fa-external-link-alt"></i> <a href="https://web.igme.es/GeoFPI/pt/default.htm" target="_blank" rel="noopener">GeoFPI</a></span>
+          </p>
+          <p>Cross-border observatory for geo-economic valorisation of the Iberian Pyrite Belt. GIS standardisation between PT and ES; maps at 1:400,000 and 1:200,000 for transboundary geological resource assessment.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/geofpi-logo.png" alt="GeoFPI"></div>
+      </div>
+    </article>
+
+    <article class="exp-card muted">
+      <span class="exp-status completed">COMPLETED</span>
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>EXPLORA — Neves-Corvo Geological Vectors</h3><span class="exp-dates">2016 — 2020</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-search"></i> Geological Exploration & Prospectivity</span>
+            <span><i class="fas fa-external-link-alt"></i> <a href="https://www.lneg.pt/project/explora/" target="_blank" rel="noopener">LNEG project page</a></span>
+          </p>
+          <p>New geological, geophysical and geochemical knowledge vectors for the northern Neves-Corvo region. Maps at 1:50,000 integrating geological and geophysical datasets for enhanced mineral exploration.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/EXPLORA_logo.png" alt="EXPLORA"></div>
+      </div>
+    </article>
+
+    <article class="exp-card muted">
+      <span class="exp-status completed">COMPLETED</span>
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>ZOM 3D — Ossa-Morena Metallogenic Models</h3><span class="exp-dates">2016 — 2019</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-cube"></i> 3D Metallogenic Modelling</span>
+            <span><i class="fas fa-external-link-alt"></i> <a href="https://www.lneg.pt/project/zom-3d/" target="_blank" rel="noopener">LNEG project page</a></span>
+          </p>
+          <p>3D metallogenic models for mineral resource valorisation in Alentejo. Sentinel-2, ASTER and Landsat-derived spectral indices for mineral assessment. Very high-resolution geological maps of Moura-Ficalho, Barrancos, and others.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/zom3d_logo.png" alt="ZOM 3D"></div>
+      </div>
+    </article>
+
+    <article class="exp-card muted">
+      <span class="exp-status completed">COMPLETED</span>
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>LNEG 2.0 — Innovation and Competitiveness</h3><span class="exp-dates">2013 — 2014</span></div>
+          <p class="exp-org"><span><i class="fas fa-rocket"></i> Institutional Development & Modernisation</span></p>
+          <p>Systematic georeferencing of large volumes of scanned maps at different scales for digital archive modernisation. Comprehensive metadata standards for legacy mining and exploration reports.</p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/lneg-logo.png" alt="LNEG"></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- EDUCATION -->
+<!-- ============================================================ -->
+<section class="section" id="education">
+  <div class="wrap">
+    <h2><span class="id">[07]</span> Education</h2>
+
+    <article class="exp-card">
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>PhD in Geographic Engineering</h3><span class="exp-dates">2025 — 2028 (est.)</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-university"></i> Faculty of Sciences, University of Porto, Portugal</span>
+            <span><i class="fas fa-graduation-cap"></i> FCT Research Scholarship</span>
+          </p>
+          <p><strong>Provisional thesis title:</strong> <em>The applicability of remote sensing and machine learning algorithms for identifying critical and strategic mineral resources.</em></p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/fcup.png" alt="FCUP"></div>
+      </div>
+    </article>
+
+    <article class="exp-card">
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>MSc in Geographic Information Systems and Spatial Planning</h3><span class="exp-dates">2010 — 2012</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-university"></i> Faculty of Arts, University of Porto, Portugal</span>
+            <span><i class="fas fa-star"></i> Grade 17/20</span>
+          </p>
+          <p><strong>Thesis:</strong> <em>Flood-prone areas assessment in Leça River — hydraulic modelling for two areas of Matosinhos municipality.</em></p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/flup.png" alt="FLUP"></div>
+      </div>
+    </article>
+
+    <article class="exp-card">
+      <div class="exp-card-with-logo">
+        <div>
+          <div class="exp-head"><h3>BA in Geography</h3><span class="exp-dates">2005 — 2010</span></div>
+          <p class="exp-org">
+            <span><i class="fas fa-university"></i> Faculty of Arts, University of Porto, Portugal</span>
+            <span><i class="fas fa-star"></i> Grade 13/20</span>
+          </p>
+          <p><strong>Thesis:</strong> <em>Flood risk assessment and civil protection.</em></p>
+        </div>
+        <div class="exp-logo"><img src="images/logos/flup.png" alt="FLUP"></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- LANGUAGES -->
+<!-- ============================================================ -->
+<section class="section band" id="languages">
+  <div class="wrap">
+    <h2><span class="id">[08]</span> Languages</h2>
+
+    <div class="languages">
+      <div class="lang-card">
+        <div class="lang-head">
+          <span class="lang-flag" aria-hidden="true">🇵🇹</span>
+          <h4>Portuguese</h4>
+          <span class="lang-level native">Native</span>
+        </div>
+        <div class="lang-skills">
+          <div class="lang-row"><span class="lang-label">Speaking</span><div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div><span class="lang-cefr">C2</span></div>
+          <div class="lang-row"><span class="lang-label">Reading</span><div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div><span class="lang-cefr">C2</span></div>
+          <div class="lang-row"><span class="lang-label">Writing</span><div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div><span class="lang-cefr">C2</span></div>
+        </div>
+      </div>
+
+      <div class="lang-card">
+        <div class="lang-head">
+          <span class="lang-flag" aria-hidden="true">🇬🇧</span>
+          <h4>English</h4>
+          <span class="lang-level advanced">Advanced</span>
+        </div>
+        <div class="lang-skills">
+          <div class="lang-row"><span class="lang-label">Speaking</span><div class="lang-bar"><div class="lang-fill" style="width:85%"></div></div><span class="lang-cefr">C1</span></div>
+          <div class="lang-row"><span class="lang-label">Reading</span><div class="lang-bar"><div class="lang-fill" style="width:90%"></div></div><span class="lang-cefr">C1</span></div>
+          <div class="lang-row"><span class="lang-label">Writing</span><div class="lang-bar"><div class="lang-fill" style="width:85%"></div></div><span class="lang-cefr">C1</span></div>
+        </div>
+      </div>
+
+      <div class="lang-card muted">
+        <div class="lang-head">
+          <span class="lang-flag" aria-hidden="true">🇪🇸</span>
+          <h4>Spanish</h4>
+          <span class="lang-level basic">Basic</span>
+        </div>
+        <div class="lang-skills">
+          <div class="lang-row"><span class="lang-label">Speaking</span><div class="lang-bar"><div class="lang-fill" style="width:20%"></div></div><span class="lang-cefr">A1</span></div>
+          <div class="lang-row"><span class="lang-label">Reading</span><div class="lang-bar"><div class="lang-fill" style="width:60%"></div></div><span class="lang-cefr">B1</span></div>
+          <div class="lang-row"><span class="lang-label">Writing</span><div class="lang-bar"><div class="lang-fill" style="width:20%"></div></div><span class="lang-cefr">A1</span></div>
+        </div>
+      </div>
+
+      <div class="lang-card muted">
+        <div class="lang-head">
+          <span class="lang-flag" aria-hidden="true">🇫🇷</span>
+          <h4>French</h4>
+          <span class="lang-level basic">Basic</span>
+        </div>
+        <div class="lang-skills">
+          <div class="lang-row"><span class="lang-label">Speaking</span><div class="lang-bar"><div class="lang-fill" style="width:20%"></div></div><span class="lang-cefr">A1</span></div>
+          <div class="lang-row"><span class="lang-label">Reading</span><div class="lang-bar"><div class="lang-fill" style="width:60%"></div></div><span class="lang-cefr">B1</span></div>
+          <div class="lang-row"><span class="lang-label">Writing</span><div class="lang-bar"><div class="lang-fill" style="width:20%"></div></div><span class="lang-cefr">A1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer>
+  <div class="wrap">
+    <p>© 2026 Pedro Gonçalves · All rights reserved</p>
+    <p>Last updated May 2026 · <a href="mailto:pedro.goncalves@lneg.pt">Contact for updates</a></p>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Pedro Miguel da Mata Gonçalves",
+  "givenName": "Pedro",
+  "familyName": "Gonçalves",
+  "url": "https://pedrommgoncalves.github.io/",
+  "image": "https://pedrommgoncalves.github.io/images/pedro-photo.jpg",
+  "jobTitle": "Geospatial Engineer & PhD Candidate",
+  "email": "mailto:pedro.goncalves@lneg.pt",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Laboratório Nacional de Energia e Geologia (LNEG)",
+    "url": "https://www.lneg.pt/"
+  },
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Faculdade de Ciências da Universidade do Porto"
+    }
+  ],
+  "sameAs": [
+    "https://orcid.org/0000-0002-6556-6086",
+    "https://www.linkedin.com/in/pedrommgoncalves85/",
+    "https://github.com/PedroMMGoncalves"
+  ],
+  "knowsAbout": [
+    "Geographic Information Systems",
+    "Remote Sensing",
+    "Sentinel-2",
+    "Hyperspectral imaging",
+    "LiDAR",
+    "UAV / Drone surveys",
+    "Critical Raw Materials prospectivity",
+    "Graph Neural Networks",
+    "Flood hazard mapping",
+    "Python geospatial development"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Matosinhos",
+    "addressRegion": "Porto",
+    "addressCountry": "Portugal"
+  }
+}
+</script>
+
+</body>
+</html>
