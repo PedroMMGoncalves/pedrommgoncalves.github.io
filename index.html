@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.classList.add('js');</script>
 <title>Pedro Gonçalves — Geospatial Engineer & PhD Candidate</title>
 
 <meta name="description" content="Geospatial engineer at LNEG (Portuguese Geological Survey) and PhD candidate at the University of Porto. Critical Raw Materials prospectivity with Graph Neural Networks, Sentinel-2 and hyperspectral remote sensing, UAV/LiDAR surveys, and training for African geological surveys (PanAfGeo).">
@@ -987,6 +988,47 @@ footer a:hover { color: var(--copper); }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ============================================================
+   SCROLL REVEAL (only when JS enabled)
+   ============================================================ */
+html.js .section h2,
+html.js .exp-card,
+html.js .skill-category,
+html.js .pub,
+html.js .lang-card,
+html.js .callout,
+html.js .pubs-footer,
+html.js .gallery-intro {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+html.js .section h2.in-view,
+html.js .exp-card.in-view,
+html.js .skill-category.in-view,
+html.js .pub.in-view,
+html.js .lang-card.in-view,
+html.js .callout.in-view,
+html.js .pubs-footer.in-view,
+html.js .gallery-intro.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .section h2,
+  html.js .exp-card,
+  html.js .skill-category,
+  html.js .pub,
+  html.js .lang-card,
+  html.js .callout,
+  html.js .pubs-footer,
+  html.js .gallery-intro {
+    opacity: 1;
+    transform: none;
+  }
+}
 </style>
 </head>
 <body>
@@ -1475,7 +1517,7 @@ footer a:hover { color: var(--copper); }
     </article>
 
     <div class="pubs-footer">
-      <p><strong>50+ peer-reviewed publications</strong> in international journals and conferences.</p>
+      <p><strong><span class="counter" data-target="50" data-suffix="+">50+</span> peer-reviewed publications</strong> in international journals and conferences.</p>
       <a href="https://orcid.org/0000-0002-6556-6086" target="_blank" rel="noopener">View complete list on ORCID →</a>
     </div>
   </div>
@@ -1926,6 +1968,48 @@ footer a:hover { color: var(--copper); }
       if (!ticking) { requestAnimationFrame(updateNav); ticking = true; }
     }, { passive: true });
     updateNav();
+  }
+
+  // Scroll reveal — fade up sections, cards, callouts as they enter viewport
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealSelector = '.section h2, .exp-card, .skill-category, .pub, .lang-card, .callout, .pubs-footer, .gallery-intro';
+  const revealEls = document.querySelectorAll(revealSelector);
+  if ('IntersectionObserver' in window && !reducedMotion) {
+    const revealIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          revealIO.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealIO.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in-view'));
+  }
+
+  // Counter animation
+  const counters = document.querySelectorAll('.counter');
+  if (counters.length && 'IntersectionObserver' in window && !reducedMotion) {
+    counters.forEach(c => { c.textContent = '0'; });
+    const countIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !e.target.dataset.done) {
+          const target = parseInt(e.target.dataset.target, 10);
+          const suffix = e.target.dataset.suffix || '';
+          const dur = 1500;
+          const start = performance.now();
+          (function tick(now) {
+            const t = Math.min((now - start) / dur, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            e.target.textContent = Math.round(target * eased) + (t === 1 ? suffix : '');
+            if (t < 1) requestAnimationFrame(tick);
+            else e.target.dataset.done = '1';
+          })(start);
+        }
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(c => countIO.observe(c));
   }
 
   closeBtn.addEventListener('click', close);
