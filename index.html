@@ -755,6 +755,33 @@ img { max-width: 100%; height: auto; }
   column-count: 3;
   column-gap: 16px;
 }
+.masonry.collapsed .m-item:nth-child(n+13) { display: none; }
+
+.show-all-btn {
+  display: block;
+  margin: 36px auto 0;
+  background: var(--copper);
+  color: var(--ink);
+  border: none;
+  padding: 13px 30px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.show-all-btn:hover, .show-all-btn:focus-visible {
+  background: var(--copper-deep);
+  outline: none;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(184, 115, 51, 0.3);
+}
+.show-all-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.show-all-btn span { margin-left: 6px; display: inline-block; transition: transform 0.3s; }
+.masonry:not(.collapsed) + .show-all-btn span { transform: rotate(180deg); }
 .masonry .m-item {
   display: block;
   margin: 0 0 16px;
@@ -922,46 +949,6 @@ footer a:hover { color: var(--copper); }
   </header>
 </div>
 
-<!-- ============================================================ -->
-<!-- SELECTED WORK (masonry gallery) -->
-<!-- ============================================================ -->
-<section class="section gallery-section" id="work">
-  <div class="wrap">
-    <h2><span class="id">— Selected</span> Work</h2>
-    <p class="gallery-intro">A visual cross-section of recent work: mineral prospectivity maps, UAV / LiDAR surveys, country-wide satellite mosaics, multispectral and hyperspectral outputs, and field campaigns. Click any image to enlarge.</p>
-    <div class="masonry" id="masonry">
-      <a href="images/featured/01.jpg" class="m-item" data-w="788" data-h="1170"><img src="images/featured/01-thumb.jpg" alt="" loading="lazy" width="539" height="800"></a>
-      <a href="images/featured/02.jpg" class="m-item" data-w="1560" data-h="1020"><img src="images/featured/02-thumb.jpg" alt="" loading="lazy" width="800" height="523"></a>
-      <a href="images/featured/03.jpg" class="m-item" data-w="1010" data-h="1056"><img src="images/featured/03-thumb.jpg" alt="" loading="lazy" width="765" height="800"></a>
-      <a href="images/featured/04.jpg" class="m-item" data-w="1080" data-h="1620"><img src="images/featured/04-thumb.jpg" alt="" loading="lazy" width="533" height="800"></a>
-      <a href="images/featured/05.jpg" class="m-item" data-w="970" data-h="668"><img src="images/featured/05-thumb.jpg" alt="" loading="lazy" width="800" height="551"></a>
-      <a href="images/featured/06.jpg" class="m-item" data-w="1800" data-h="802"><img src="images/featured/06-thumb.jpg" alt="" loading="lazy" width="800" height="356"></a>
-      <a href="images/featured/07.jpg" class="m-item" data-w="570" data-h="1800"><img src="images/featured/07-thumb.jpg" alt="" loading="lazy" width="253" height="800"></a>
-      <a href="images/featured/08.jpg" class="m-item" data-w="1198" data-h="759"><img src="images/featured/08-thumb.jpg" alt="" loading="lazy" width="800" height="507"></a>
-      <a href="images/featured/09.jpg" class="m-item" data-w="570" data-h="1800"><img src="images/featured/09-thumb.jpg" alt="" loading="lazy" width="253" height="800"></a>
-      <a href="images/featured/10.jpg" class="m-item" data-w="1800" data-h="997"><img src="images/featured/10-thumb.jpg" alt="" loading="lazy" width="800" height="443"></a>
-      <a href="images/featured/11.jpg" class="m-item" data-w="570" data-h="1800"><img src="images/featured/11-thumb.jpg" alt="" loading="lazy" width="253" height="800"></a>
-      <a href="images/featured/12.jpg" class="m-item" data-w="1688" data-h="1136"><img src="images/featured/12-thumb.jpg" alt="" loading="lazy" width="800" height="538"></a>
-      <a href="images/featured/13.jpg" class="m-item" data-w="1591" data-h="609"><img src="images/featured/13-thumb.jpg" alt="" loading="lazy" width="800" height="306"></a>
-      <a href="images/featured/14.jpg" class="m-item" data-w="1655" data-h="1138"><img src="images/featured/14-thumb.jpg" alt="" loading="lazy" width="800" height="550"></a>
-      <a href="images/featured/15.jpg" class="m-item" data-w="1646" data-h="1120"><img src="images/featured/15-thumb.jpg" alt="" loading="lazy" width="800" height="544"></a>
-      <a href="images/featured/16.jpg" class="m-item" data-w="1617" data-h="1167"><img src="images/featured/16-thumb.jpg" alt="" loading="lazy" width="800" height="577"></a>
-      <a href="images/featured/17.jpg" class="m-item" data-w="1615" data-h="1124"><img src="images/featured/17-thumb.jpg" alt="" loading="lazy" width="800" height="557"></a>
-      <a href="images/featured/18.jpg" class="m-item" data-w="1347" data-h="1014"><img src="images/featured/18-thumb.jpg" alt="" loading="lazy" width="800" height="602"></a>
-      <a href="images/featured/19.jpg" class="m-item" data-w="1071" data-h="1057"><img src="images/featured/19-thumb.jpg" alt="" loading="lazy" width="800" height="790"></a>
-      <a href="images/featured/20.jpg" class="m-item" data-w="1501" data-h="1053"><img src="images/featured/20-thumb.jpg" alt="" loading="lazy" width="800" height="561"></a>
-      <a href="images/featured/21.jpg" class="m-item" data-w="1800" data-h="1200"><img src="images/featured/21-thumb.jpg" alt="" loading="lazy" width="800" height="533"></a>
-      <a href="images/featured/22.jpg" class="m-item" data-w="1800" data-h="1200"><img src="images/featured/22-thumb.jpg" alt="" loading="lazy" width="800" height="533"></a>
-      <a href="images/featured/23.jpg" class="m-item" data-w="1800" data-h="1200"><img src="images/featured/23-thumb.jpg" alt="" loading="lazy" width="800" height="533"></a>
-      <a href="images/featured/24.jpg" class="m-item" data-w="1800" data-h="1200"><img src="images/featured/24-thumb.jpg" alt="" loading="lazy" width="800" height="533"></a>
-      <a href="images/featured/25.jpg" class="m-item" data-w="1800" data-h="1093"><img src="images/featured/25-thumb.jpg" alt="" loading="lazy" width="800" height="486"></a>
-      <a href="images/featured/26.jpg" class="m-item" data-w="570" data-h="1800"><img src="images/featured/26-thumb.jpg" alt="" loading="lazy" width="253" height="800"></a>
-      <a href="images/featured/27.jpg" class="m-item" data-w="570" data-h="1800"><img src="images/featured/27-thumb.jpg" alt="" loading="lazy" width="253" height="800"></a>
-      <a href="images/featured/28.jpg" class="m-item" data-w="1271" data-h="1800"><img src="images/featured/28-thumb.jpg" alt="" loading="lazy" width="565" height="800"></a>
-    </div>
-  </div>
-</section>
-
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
   <button class="lightbox-btn lightbox-close" aria-label="Close">×</button>
@@ -1007,11 +994,52 @@ footer a:hover { color: var(--copper); }
 </section>
 
 <!-- ============================================================ -->
+<!-- SELECTED WORK -->
+<!-- ============================================================ -->
+<section class="section band gallery-section" id="work">
+  <div class="wrap">
+    <h2><span class="id">[02]</span> Selected Work</h2>
+    <p class="gallery-intro">A visual cross-section of recent work: mineral prospectivity maps, UAV / LiDAR surveys, country-wide satellite mosaics, multispectral and hyperspectral outputs, and field campaigns. Click any image to enlarge.</p>
+    <div class="masonry collapsed" id="masonry">
+      <a href="images/featured/01.jpg" class="m-item" data-w="788" data-h="1170"><img src="images/featured/01-thumb.jpg" alt="" loading="lazy" width="539" height="800"></a>
+      <a href="images/featured/02.jpg" class="m-item" data-w="1560" data-h="1020"><img src="images/featured/02-thumb.jpg" alt="" loading="lazy" width="800" height="523"></a>
+      <a href="images/featured/03.jpg" class="m-item" data-w="1010" data-h="1056"><img src="images/featured/03-thumb.jpg" alt="" loading="lazy" width="765" height="800"></a>
+      <a href="images/featured/04.jpg" class="m-item" data-w="1080" data-h="1620"><img src="images/featured/04-thumb.jpg" alt="" loading="lazy" width="533" height="800"></a>
+      <a href="images/featured/05.jpg" class="m-item" data-w="970" data-h="668"><img src="images/featured/05-thumb.jpg" alt="" loading="lazy" width="800" height="551"></a>
+      <a href="images/featured/06.jpg" class="m-item" data-w="1800" data-h="802"><img src="images/featured/06-thumb.jpg" alt="" loading="lazy" width="800" height="356"></a>
+      <a href="images/featured/07.jpg" class="m-item" data-w="570" data-h="1800"><img src="images/featured/07-thumb.jpg" alt="" loading="lazy" width="253" height="800"></a>
+      <a href="images/featured/08.jpg" class="m-item" data-w="1198" data-h="759"><img src="images/featured/08-thumb.jpg" alt="" loading="lazy" width="800" height="507"></a>
+      <a href="images/featured/09.jpg" class="m-item" data-w="570" data-h="1800"><img src="images/featured/09-thumb.jpg" alt="" loading="lazy" width="253" height="800"></a>
+      <a href="images/featured/10.jpg" class="m-item" data-w="1800" data-h="997"><img src="images/featured/10-thumb.jpg" alt="" loading="lazy" width="800" height="443"></a>
+      <a href="images/featured/11.jpg" class="m-item" data-w="570" data-h="1800"><img src="images/featured/11-thumb.jpg" alt="" loading="lazy" width="253" height="800"></a>
+      <a href="images/featured/12.jpg" class="m-item" data-w="1688" data-h="1136"><img src="images/featured/12-thumb.jpg" alt="" loading="lazy" width="800" height="538"></a>
+      <a href="images/featured/13.jpg" class="m-item" data-w="1591" data-h="609"><img src="images/featured/13-thumb.jpg" alt="" loading="lazy" width="800" height="306"></a>
+      <a href="images/featured/14.jpg" class="m-item" data-w="1655" data-h="1138"><img src="images/featured/14-thumb.jpg" alt="" loading="lazy" width="800" height="550"></a>
+      <a href="images/featured/15.jpg" class="m-item" data-w="1646" data-h="1120"><img src="images/featured/15-thumb.jpg" alt="" loading="lazy" width="800" height="544"></a>
+      <a href="images/featured/16.jpg" class="m-item" data-w="1617" data-h="1167"><img src="images/featured/16-thumb.jpg" alt="" loading="lazy" width="800" height="577"></a>
+      <a href="images/featured/17.jpg" class="m-item" data-w="1615" data-h="1124"><img src="images/featured/17-thumb.jpg" alt="" loading="lazy" width="800" height="557"></a>
+      <a href="images/featured/18.jpg" class="m-item" data-w="1347" data-h="1014"><img src="images/featured/18-thumb.jpg" alt="" loading="lazy" width="800" height="602"></a>
+      <a href="images/featured/19.jpg" class="m-item" data-w="1071" data-h="1057"><img src="images/featured/19-thumb.jpg" alt="" loading="lazy" width="800" height="790"></a>
+      <a href="images/featured/20.jpg" class="m-item" data-w="1501" data-h="1053"><img src="images/featured/20-thumb.jpg" alt="" loading="lazy" width="800" height="561"></a>
+      <a href="images/featured/21.jpg" class="m-item" data-w="1800" data-h="1200"><img src="images/featured/21-thumb.jpg" alt="" loading="lazy" width="800" height="533"></a>
+      <a href="images/featured/22.jpg" class="m-item" data-w="1800" data-h="1200"><img src="images/featured/22-thumb.jpg" alt="" loading="lazy" width="800" height="533"></a>
+      <a href="images/featured/23.jpg" class="m-item" data-w="1800" data-h="1200"><img src="images/featured/23-thumb.jpg" alt="" loading="lazy" width="800" height="533"></a>
+      <a href="images/featured/24.jpg" class="m-item" data-w="1800" data-h="1200"><img src="images/featured/24-thumb.jpg" alt="" loading="lazy" width="800" height="533"></a>
+      <a href="images/featured/25.jpg" class="m-item" data-w="1800" data-h="1093"><img src="images/featured/25-thumb.jpg" alt="" loading="lazy" width="800" height="486"></a>
+      <a href="images/featured/26.jpg" class="m-item" data-w="570" data-h="1800"><img src="images/featured/26-thumb.jpg" alt="" loading="lazy" width="253" height="800"></a>
+      <a href="images/featured/27.jpg" class="m-item" data-w="570" data-h="1800"><img src="images/featured/27-thumb.jpg" alt="" loading="lazy" width="253" height="800"></a>
+      <a href="images/featured/28.jpg" class="m-item" data-w="1271" data-h="1800"><img src="images/featured/28-thumb.jpg" alt="" loading="lazy" width="565" height="800"></a>
+    </div>
+    <button class="show-all-btn" id="show-all" aria-controls="masonry" aria-expanded="false">Show all 28 <span aria-hidden="true">↓</span></button>
+  </div>
+</section>
+
+<!-- ============================================================ -->
 <!-- CURRENT POSITION -->
 <!-- ============================================================ -->
 <section class="section band" id="position">
   <div class="wrap">
-    <h2><span class="id">[02]</span> Current Position</h2>
+    <h2><span class="id">[03]</span> Current Position</h2>
 
     <article class="exp-card">
       <span class="exp-status">ACTIVE</span>
@@ -1049,7 +1077,7 @@ footer a:hover { color: var(--copper); }
 <!-- ============================================================ -->
 <section class="section" id="experience">
   <div class="wrap">
-    <h2><span class="id">[03]</span> Previous Experience</h2>
+    <h2><span class="id">[04]</span> Previous Experience</h2>
 
     <article class="exp-card">
       <div class="exp-card-with-logo">
@@ -1124,7 +1152,7 @@ footer a:hover { color: var(--copper); }
 <!-- ============================================================ -->
 <section class="section band" id="skills">
   <div class="wrap">
-    <h2><span class="id">[04]</span> Skills & Technology</h2>
+    <h2><span class="id">[05]</span> Skills & Technology</h2>
 
     <div class="skill-category">
       <div class="skill-head">
@@ -1263,7 +1291,7 @@ footer a:hover { color: var(--copper); }
 <!-- ============================================================ -->
 <section class="section" id="publications">
   <div class="wrap">
-    <h2><span class="id">[05]</span> Selected Publications</h2>
+    <h2><span class="id">[06]</span> Selected Publications</h2>
 
     <article class="pub q1">
       <div class="pub-swatch" aria-hidden="true"></div>
@@ -1335,7 +1363,7 @@ footer a:hover { color: var(--copper); }
 <!-- ============================================================ -->
 <section class="section band" id="projects">
   <div class="wrap">
-    <h2><span class="id">[06]</span> Research Projects</h2>
+    <h2><span class="id">[07]</span> Research Projects</h2>
 
     <h3 class="subsection-title"><span class="dot"></span> Active Projects</h3>
 
@@ -1568,7 +1596,7 @@ footer a:hover { color: var(--copper); }
 <!-- ============================================================ -->
 <section class="section" id="education">
   <div class="wrap">
-    <h2><span class="id">[07]</span> Education</h2>
+    <h2><span class="id">[08]</span> Education</h2>
 
     <article class="exp-card">
       <div class="exp-card-with-logo">
@@ -1619,7 +1647,7 @@ footer a:hover { color: var(--copper); }
 <!-- ============================================================ -->
 <section class="section band" id="languages">
   <div class="wrap">
-    <h2><span class="id">[08]</span> Languages</h2>
+    <h2><span class="id">[09]</span> Languages</h2>
 
     <div class="languages">
       <div class="lang-card">
@@ -1723,6 +1751,17 @@ footer a:hover { color: var(--copper); }
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
     });
   });
+
+  // Show all toggle
+  const masonry = document.getElementById('masonry');
+  const showAll = document.getElementById('show-all');
+  if (masonry && showAll) {
+    showAll.addEventListener('click', () => {
+      const isCollapsed = masonry.classList.toggle('collapsed');
+      showAll.setAttribute('aria-expanded', String(!isCollapsed));
+      showAll.firstChild.textContent = isCollapsed ? 'Show all 28 ' : 'Show fewer ';
+    });
+  }
   closeBtn.addEventListener('click', close);
   prevBtn.addEventListener('click', () => nav(-1));
   nextBtn.addEventListener('click', () => nav(1));
