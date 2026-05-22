@@ -287,7 +287,7 @@ img { max-width: 100%; height: auto; }
 }
 @media (max-width: 640px) {
   .mini-nav-inner { padding: 10px 20px; gap: 18px; justify-content: flex-start; }
-  .mini-nav a { font-size: 10px; }
+  .mini-nav a { font-size: 11px; }
 }
 
 /* ============================================================
@@ -317,7 +317,6 @@ img { max-width: 100%; height: auto; }
   letter-spacing: -0.015em;
   margin-bottom: 44px;
   color: var(--navy);
-  font-variation-settings: 'opsz' 32;
 }
 .section h2 .id {
   font-size: 14px;
@@ -1863,18 +1862,18 @@ footer a:hover { color: var(--copper); }
   }
 
   // Mini-nav: show after hero scrolls past + scroll-spy
-  const nav = document.getElementById('mini-nav');
+  const miniNav = document.getElementById('mini-nav');
   const sections = ['about','work','position','experience','skills','publications','projects','education','languages']
     .map(id => document.getElementById(id))
     .filter(Boolean);
-  const navLinks = nav ? Array.from(nav.querySelectorAll('a')) : [];
+  const navLinks = miniNav ? Array.from(miniNav.querySelectorAll('a')) : [];
 
-  if (nav && sections.length) {
+  if (miniNav && sections.length) {
     const hero = document.querySelector('.hero-outer');
     let ticking = false;
     function updateNav() {
       const showAt = hero ? hero.offsetHeight + hero.offsetTop - 40 : 400;
-      nav.classList.toggle('visible', window.scrollY > showAt);
+      miniNav.classList.toggle('visible', window.scrollY > showAt);
       // Scroll-spy: find the section closest to top-of-viewport
       const probe = window.scrollY + 120;
       let active = sections[0].id;
