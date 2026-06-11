@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found — Pedro Gonçalves</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1e2a3f">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 600; font-display: swap; src: url('/fonts/space-grotesk-600.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('/fonts/inter-400.woff2') format('woff2'); }
+
+  :root {
+    --ink: #0f1620;
+    --navy: #1e2a3f;
+    --navy-soft: #2c3a52;
+    --copper: #b87333;
+    --copper-deep: #8a5722;
+    --parchment: #f4ede0;
+    --parchment-light: #fbf6ec;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    line-height: 1.65;
+  }
+  .card {
+    max-width: 560px;
+    text-align: center;
+    background: var(--parchment-light);
+    border: 1px solid rgba(184, 115, 51, 0.2);
+    border-top: 4px solid var(--copper);
+    border-radius: 6px;
+    padding: 56px 48px;
+    box-shadow: 0 2px 14px rgba(15, 22, 32, 0.08);
+  }
+  .legend {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--copper-deep);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: clamp(3rem, 9vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  p { color: var(--navy-soft); margin-bottom: 28px; }
+  a.home {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--copper);
+    color: var(--ink);
+    padding: 13px 26px;
+    text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  a.home:hover, a.home:focus-visible { background: var(--copper-deep); color: var(--parchment-light); outline: none; }
+  a.home:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; }
+</style>
+</head>
+<body>
+<main class="card">
+  <p class="legend">Coordinates not found</p>
+  <h1>404</h1>
+  <p>This page is off the map — it may have been moved or never existed.</p>
+  <a class="home" href="/">← Back to the portfolio</a>
+</main>
+</body>
+</html>

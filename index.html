@@ -16,17 +16,25 @@
 <meta property="og:title" content="Pedro Gonçalves — Geospatial Engineer & PhD Candidate">
 <meta property="og:description" content="Geospatial engineering at LNEG, PhD research on Graph Neural Networks for Critical Raw Materials prospectivity, and trainer for African geological surveys under PanAfGeo.">
 <meta property="og:image" content="https://pedrommgoncalves.github.io/images/Namibia_PCA214.jpg">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1084">
+<meta property="og:image:alt" content="False-colour PCA satellite composite of Namibia">
 <meta property="og:locale" content="en_GB">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Pedro Gonçalves — Geospatial Engineer & PhD Candidate">
 <meta name="twitter:description" content="Geospatial engineering at LNEG, PhD research on Graph Neural Networks for Critical Raw Materials prospectivity, and trainer for African geological surveys under PanAfGeo.">
 <meta name="twitter:image" content="https://pedrommgoncalves.github.io/images/Namibia_PCA214.jpg">
+<meta name="twitter:image:alt" content="False-colour PCA satellite composite of Namibia">
 
 <meta name="theme-color" content="#1e2a3f">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="preload" as="image" href="images/Namibia_PCA214.jpg" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="fonts/space-grotesk-600.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-400.woff2" crossorigin>
 
 <style>
   @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/inter-400.woff2') format('woff2'); }
@@ -1167,7 +1175,7 @@ html.js .gallery-intro.in-view {
 </head>
 <body>
 
-<a href="#about" class="skip-link">Skip to content</a>
+<a href="#main" class="skip-link">Skip to content</a>
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="i-linkedin" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc. --><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></symbol>
@@ -1255,6 +1263,8 @@ html.js .gallery-intro.in-view {
     <a href="#languages" data-target="languages">Languages</a>
   </div>
 </nav>
+
+<main id="main" tabindex="-1" style="outline:none">
 
 <!-- ============================================================ -->
 <!-- ABOUT -->
@@ -1731,7 +1741,7 @@ html.js .gallery-intro.in-view {
         <div>
           <div class="exp-head"><h3>GSEU — A Geological Service for Europe</h3><span class="exp-dates">2022 — 2027</span></div>
           <p class="exp-org">
-            <span><svg class="icon" aria-hidden="true"><use href="#i-flag"/></svg> UK Research & Innovation</span>
+            <span><svg class="icon" aria-hidden="true"><use href="#i-flag"/></svg> Horizon Europe Project</span>
             <span><svg class="icon" aria-hidden="true"><use href="#i-external-link-alt"/></svg> <a href="https://www.geologicalservice.eu/" target="_blank" rel="noopener">geologicalservice.eu</a></span>
           </p>
           <p>Multiple UAV missions (aerophotogrammetry and LiDAR) on abandoned mines in southern Portugal — calculating volumes of old mine tailings to estimate in-situ mineral tonnage. Sentinel-2 Level-1C processing with the C2RCC algorithm. Custom toolbox for Total Suspended Sediments estimation.</p>
@@ -2006,13 +2016,15 @@ html.js .gallery-intro.in-view {
   </div>
 </section>
 
+</main>
+
 <!-- ============================================================ -->
 <!-- FOOTER -->
 <!-- ============================================================ -->
 <footer>
   <div class="wrap">
     <p>© 2026 Pedro Gonçalves · All rights reserved</p>
-    <p>Last updated May 2026 · <a href="mailto:pedro.goncalves@lneg.pt">Contact for updates</a></p>
+    <p>Last updated June 2026 · <a href="mailto:pedro.goncalves@lneg.pt">Contact for updates</a></p>
   </div>
 </footer>
 
@@ -2036,6 +2048,11 @@ html.js .gallery-intro.in-view {
     const t = items[i].querySelector('img');
     return (t && t.getAttribute('alt')) || `Selected work — image ${i + 1} of ${items.length}`;
   }
+  function preloadNeighbours(i) {
+    [(i + 1) % items.length, (i - 1 + items.length) % items.length].forEach(j => {
+      new Image().src = items[j].getAttribute('href');
+    });
+  }
   function open(i) {
     idx = i;
     lastTrigger = items[i];
@@ -2045,6 +2062,7 @@ html.js .gallery-intro.in-view {
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
     closeBtn.focus();
+    preloadNeighbours(i);
   }
   function close() {
     lb.classList.remove('open');
@@ -2058,9 +2076,16 @@ html.js .gallery-intro.in-view {
     img.src = items[idx].getAttribute('href');
     img.alt = captionFor(idx);
     curEl.textContent = idx + 1;
+    preloadNeighbours(idx);
   }
 
   items.forEach((a, i) => {
+    // Accessible name fallback while gallery images have empty alt text;
+    // skipped automatically once a descriptive alt is provided.
+    const thumb = a.querySelector('img');
+    if (!thumb || !thumb.getAttribute('alt')) {
+      a.setAttribute('aria-label', `Open work sample ${i + 1} of ${items.length} in image viewer`);
+    }
     a.addEventListener('click', e => { e.preventDefault(); open(i); });
     a.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
@@ -2097,7 +2122,12 @@ html.js .gallery-intro.in-view {
       for (const s of sections) {
         if (s.offsetTop <= probe) active = s.id;
       }
-      navLinks.forEach(a => a.classList.toggle('active', a.dataset.target === active));
+      navLinks.forEach(a => {
+        const isActive = a.dataset.target === active;
+        a.classList.toggle('active', isActive);
+        if (isActive) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
       ticking = false;
     }
     window.addEventListener('scroll', () => {
